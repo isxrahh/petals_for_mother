@@ -4,7 +4,7 @@ const nextConfig: NextConfig = {
   /* config options here */
   reactCompiler: true,
   output: "export", // Important for Capacitor
-  trailingSlash: true,
+  trailingSlash: false,
   images: {
     unoptimized: true, // Required for static export
   },

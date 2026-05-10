@@ -128,7 +128,7 @@ export default function BouquetPage() {
   const [lastQuote, setLastQuote] = useState<string>("");
 
   const fetchQuote = async (flowerName: string) => {
-    const res = await fetch("/api/generate-quote", {
+    const res = await fetch("/api/", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

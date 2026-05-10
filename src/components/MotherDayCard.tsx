@@ -38,7 +38,7 @@ export default function MotherDayStack() {
 
   const prefetchNextQuote = async () => {
     try {
-      const res = await fetch("/api/generate-quote", {
+      const res = await fetch("/api/", {
         method: "POST",
         body: JSON.stringify({
           flowerName: "Spring Flowers",

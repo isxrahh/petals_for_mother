@@ -1,0 +1,300 @@
+@import "tailwindcss";
+
+/* ====================== Mother's Day - Summer Sunset Theme ====================== */
+
+:root {
+  /* ==================== Core Colors ==================== */
+  --color-petal-frost: #ffe0e9;
+  --color-pastel-pink: #ffc2d4;
+  --color-pink-mist: #ff9ebb;
+  --color-petal-rouge: #ff7aa2;
+  --color-blush-rose: #e05780;
+  --color-rosewood: #b9375e;
+  --color-vintage-berry: #8a2846;
+  --color-crimson-violet: #602437;
+  --color-mauve-shadow: #522e38;
+  --color-light-pink: #fef2f6;
+  --color-medium-pink: #fec5d5;
+
+  /* ==================== Semantic Colors ==================== */
+  --bg-main: var(--color-petal-frost);
+  --bg-card: var(--color-pastel-pink);
+  --bg-section: var(--color-pink-mist);
+  --bg-overlay: rgba(224, 87, 128, 0.1);
+  --bg-card-light: var(--color-light-pink);
+  --bg-navbar: var(--color-medium-pink);
+
+  --accent-primary: var(--color-blush-rose);
+  --accent-hover: var(--color-petal-rouge);
+  --accent-secondary: var(--color-pink-mist);
+  --accent-soft: var(--color-petal-frost);
+
+  --text-primary: var(--color-vintage-berry);
+  --text-body: var(--color-mauve-shadow);
+  --text-muted: var(--color-rosewood);
+  --text-light: var(--color-petal-frost);
+
+  --border-light: var(--color-pink-mist);
+  --border-medium: var(--color-rosewood);
+  --border-dark: var(--color-crimson-violet);
+
+  /* ==================== Typography ==================== */
+  --font-serif: "Playfair Display", serif;
+  --font-sans: "Montserrat", system-ui, sans-serif;
+
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-lg: 1.125rem;
+  --text-xl: 1.25rem;
+  --text-2xl: 1.5rem;
+  --text-3xl: 1.875rem;
+  --text-4xl: 2.25rem;
+  --text-5xl: 3rem;
+  --text-6xl: 3.75rem;
+
+  /* ==================== Spacing ==================== */
+  --space-xs: 0.5rem;
+  --space-sm: 0.75rem;
+  --space-md: 1rem;
+  --space-lg: 1.5rem;
+  --space-xl: 2rem;
+  --space-2xl: 3rem;
+  --space-3xl: 4rem;
+
+  /* ==================== Border Radius ==================== */
+  --radius-sm: 0.75rem;
+  --radius-md: 1rem;
+  --radius-lg: 1.5rem;
+  --radius-xl: 2rem;
+  --radius-full: 9999px;
+
+  /* ==================== Shadows ==================== */
+  --shadow-sm:
+    0 4px 6px -1px rgb(224 87 128 / 0.1), 0 2px 4px -2px rgb(224 87 128 / 0.1);
+  --shadow-md:
+    0 10px 15px -3px rgb(224 87 128 / 0.15),
+    0 4px 6px -4px rgb(224 87 128 / 0.15);
+  --shadow-lg:
+    0 20px 25px -5px rgb(224 87 128 / 0.15),
+    0 8px 10px -6px rgb(224 87 128 / 0.15);
+  --shadow-soft: 0 8px 30px -10px var(--accent-primary);
+
+  /* ==================== Transitions ==================== */
+  --transition-fast: all 0.2s ease;
+  --transition-medium: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* ====================== Sunset Gradient ====================== */
+.sunset-gradient {
+  background: linear-gradient(
+    180deg,
+    var(--color-petal-frost) 0%,
+    var(--color-pastel-pink) 15%,
+    var(--color-pink-mist) 30%,
+    var(--color-petal-rouge) 45%,
+    var(--color-blush-rose) 60%,
+    var(--color-rosewood) 72%,
+    var(--color-vintage-berry) 82%,
+    var(--color-crimson-violet) 92%,
+    var(--color-mauve-shadow) 100%
+  );
+}
+
+/* ====================== Reusable Utility Classes ====================== */
+
+.bg-main {
+  background-color: var(--bg-main);
+}
+.bg-card {
+  background-color: var(--bg-card);
+}
+.bg-section {
+  background-color: var(--bg-section);
+}
+.bg-card-light {
+  background-color: var(--bg-card-light);
+}
+.bg-navbar {
+  background-color: var(--bg-navbar);
+}
+.text-primary {
+  color: var(--text-primary);
+}
+.text-body {
+  color: var(--text-body);
+}
+.text-muted {
+  color: var(--text-muted);
+}
+.text-light {
+  color: var(--text-light);
+}
+
+.border-light {
+  border-color: var(--border-light);
+}
+.border-medium {
+  border-color: var(--border-medium);
+}
+
+.rounded-sm {
+  border-radius: var(--radius-sm);
+}
+.rounded-md {
+  border-radius: var(--radius-md);
+}
+.rounded-lg {
+  border-radius: var(--radius-lg);
+}
+.rounded-xl {
+  border-radius: var(--radius-xl);
+}
+
+.shadow-sm {
+  box-shadow: var(--shadow-sm);
+}
+.shadow-md {
+  box-shadow: var(--shadow-md);
+}
+.shadow-lg {
+  box-shadow: var(--shadow-lg);
+}
+.shadow-soft {
+  box-shadow: var(--shadow-soft);
+}
+
+/* Buttons */
+.btn-primary {
+  background-color: var(--accent-primary);
+  color: white;
+  padding: var(--space-md) var(--space-xl);
+  border-radius: var(--radius-lg);
+  font-weight: 600;
+  transition: var(--transition-medium);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-sm);
+}
+
+.btn-primary:hover {
+  background-color: var(--accent-hover);
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-md);
+  cursor: pointer;
+}
+
+.btn-secondary {
+  background-color: var(--accent-secondary);
+  color: var(--text-primary);
+  padding: var(--space-md) var(--space-xl);
+  border-radius: var(--radius-lg);
+  font-weight: 500;
+  transition: var(--transition-medium);
+}
+
+.btn-secondary:hover {
+  background-color: var(--accent-hover);
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-md);
+  cursor: pointer;
+}
+
+/* Liquid Fill Button */
+.liquid-btn {
+  position: relative;
+  overflow: hidden;
+}
+
+.liquid-btn::before {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 0;
+  background: linear-gradient(
+    to top,
+    var(--accent-primary),
+    var(--accent-hover)
+  );
+  transition: height 0.7s cubic-bezier(0.34, 1.56, 0.64, 1);
+  z-index: -1;
+}
+
+.liquid-btn:hover::before {
+  height: 110%;
+}
+
+/* Bloom Animation */
+.bloom {
+  animation: petalBloom 1.4s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+@keyframes petalBloom {
+  from {
+    opacity: 0;
+    transform: scale(0.5) rotate(-12deg);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) rotate(0deg);
+  }
+}
+
+/* Soft floating petals effect */
+.petal-float {
+  animation: floatPetals 8s ease-in-out infinite;
+}
+
+@keyframes floatPetals {
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-25px) rotate(8deg);
+  }
+}
+
+/* ====================== Beating Heart ====================== */
+
+.heart-container {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.heart {
+  color: #dc0244; /* blush-rose */
+  animation: beat 1.4s ease-in-out infinite;
+  filter: drop-shadow(0 10px 15px rgba(224, 87, 128, 0.3));
+}
+
+.heart:hover {
+  color: #ff7aa2; /* petal-rouge */
+  animation-duration: 0.8s; /* faster when hovered */
+}
+
+@keyframes beat {
+  0% { transform: scale(1); }
+  25% { transform: scale(1.25); }
+  40% { transform: scale(1.15); }
+  60% { transform: scale(1.3); }
+  80% { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}
+
+@keyframes throb {
+  0% { transform: scale(1); }
+  30% { transform: scale(1.4); }
+  50% { transform: scale(1.25); }
+  70% { transform: scale(1.35); }
+  100% { transform: scale(1.25); }
+}
+
+.animate-throb {
+  animation: throb 600ms ease-in-out;
+}

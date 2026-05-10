@@ -127,24 +127,16 @@ export default function BouquetPage() {
   const [lastBouquetIndex, setLastBouquetIndex] = useState<number | null>(null);
   const [lastQuote, setLastQuote] = useState<string>("");
 
-  const fetchQuote = async (flowerName: string) => {
-    const res = await fetch("https://petals-for-mother.vercel.app/api/", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        flowerName,
-      }),
-    });
+ const fetchQuote = async (flowerName: string) => {
+  const res = await fetch("https://petals-for-mother.vercel.app/api/generate", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ flowerName }),
+  });
 
-    const data = await res.json();
-
-    return {
-      quote: data.quote,
-      author: `— ${data.author}`,
-    };
-  };
+  if (!res.ok) throw new Error("API failed");
+  return res.json();
+};
   const generateBouquet = async () => {
     setIsLoading(true);
 

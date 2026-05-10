@@ -37,20 +37,23 @@ export default function MotherDayStack() {
   }, []);
 
   const prefetchNextQuote = async () => {
-    try {
-      const res = await fetch("https://petals-for-mother.vercel.app/api/", {
-        method: "POST",
-        body: JSON.stringify({
-          flowerName: "Spring Flowers",
-          history: historyRef.current.slice(-10),
-        }),
-      });
-      const data: QuoteData = await res.json(); 
-      setNextQuote(data);
-    } catch (err) {
-      console.error("Prefetch failed", err);
-    }
-  };
+  try {
+    const res = await fetch("https://petals-for-mother.vercel.app/api/generate", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        flowerName: "Spring Flowers",
+        history: historyRef.current.slice(-10),
+      }),
+    });
+
+    if (!res.ok) throw new Error();
+    const data: QuoteData = await res.json();
+    setNextQuote(data);
+  } catch (err) {
+    console.error("Prefetch failed", err);
+  }
+};
 
   const handleFlip = () => {
     if (!nextQuote) return;

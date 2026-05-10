@@ -128,7 +128,7 @@ export default function BouquetPage() {
   const [lastQuote, setLastQuote] = useState<string>("");
 
   const fetchQuote = async (flowerName: string) => {
-    const res = await fetch("/api/", {
+    const res = await fetch("https://petals-for-mother.vercel.app/api/", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

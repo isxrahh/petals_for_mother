@@ -38,7 +38,7 @@ export default function MotherDayStack() {
 
   const prefetchNextQuote = async () => {
     try {
-      const res = await fetch("/api/", {
+      const res = await fetch("https://petals-for-mother.vercel.app/api/", {
         method: "POST",
         body: JSON.stringify({
           flowerName: "Spring Flowers",

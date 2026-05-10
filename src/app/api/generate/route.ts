@@ -1,4 +1,4 @@
-// app/api/generate/route.ts
+// src/app/api/generate/route.ts
 export const runtime = "edge";
 
 import { GoogleGenerativeAI } from "@google/generative-ai";
@@ -12,32 +12,29 @@ export async function POST(request: NextRequest) {
 
     const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
 
-    const prompt = `Generate one beautiful, emotional, short Mother's Day quote related to "${flowerName}".
-Include a meaningful author (real or fitting like "A Loving Daughter").
+    const prompt = `Generate one beautiful, short, emotional Mother's Day quote related to "${flowerName}".
 
-PREVIOUS QUOTES (DO NOT REPEAT):
-${history?.length > 0 ? history.join(" | ") : "None"}
+Previous quotes (do not repeat):
+${history?.length ? history.join(" | ") : "None"}
 
-Return ONLY valid JSON. No markdown, no extra text.
+Return ONLY valid JSON in this format:
 {
-  "quote": "the quote here",
+  "quote": "the quote text here",
   "author": "Author Name"
 }`;
 
     const result = await model.generateContent(prompt);
-    const response = await result.response;
-    let text = response.text();
+    const responseText = await result.response.text();
 
-    // Clean possible markdown
-    text = text.replace(/```json|```/g, "").trim();
+    // Clean the response
+    const cleanedText = responseText.replace(/```json|```/g, "").trim();
 
     let quoteData;
     try {
-      quoteData = JSON.parse(text);
+      quoteData = JSON.parse(cleanedText);
     } catch {
-      // Fallback parsing
       quoteData = {
-        quote: text.includes('"quote"') ? text : "A mother’s love is the most beautiful flower in the garden of life.",
+        quote: "A mother's love is like a beautiful flower that blooms forever.",
         author: "For Mom"
       };
     }
@@ -56,7 +53,8 @@ Return ONLY valid JSON. No markdown, no extra text.
       }
     );
   } catch (error) {
-    console.error("Gemini API Error:", error);
+    console.error("API Error:", error);
+
     return NextResponse.json(
       {
         quote: "Her love blooms endlessly, like flowers in spring.",
@@ -70,6 +68,7 @@ Return ONLY valid JSON. No markdown, no extra text.
   }
 }
 
+// Handle preflight requests (important for Capacitor)
 export async function OPTIONS() {
   return NextResponse.json({}, {
     headers: {
